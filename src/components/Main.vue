@@ -1,10 +1,12 @@
 <script>
-import Cards from './Cards.vue'
+import CardsMovie from './CardsMovie.vue'
+import CardsSeries from './CardsSeries.vue'
 import store from '../store.js'
 
 export default {
   components: {
-    Cards,
+    CardsMovie,
+    CardsSeries,
   },
   data() {
     return {
@@ -18,8 +20,14 @@ export default {
   <main class="container">
     <div class="row">
       <ul class="cards-grid">
-        <Cards v-for="element in store.movies" :key="element.id" :movie="element"></Cards>
-
+        <li class="section">
+          FILM
+        </li>
+        <CardsMovie v-for="movie in store.movies" :key="movie.id" :movie="movie"></CardsMovie>
+        <li class="section">
+          SERIE TV
+        </li>
+        <CardsSeries v-for="series in store.seriesTv" :key="series.id" :series="series"></CardsSeries>
       </ul>
     </div>
   </main>
@@ -27,4 +35,8 @@ export default {
 
 <style lang="scss" scoped>
 @use '../style/general.scss' as *;
+
+.section {
+  font-size: 2rem;
+}
 </style>

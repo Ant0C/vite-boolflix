@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     Getmovies() {
-      console.log('START MOUNTED')
+      console.log('START MOVIE')
       const search = this.store.search
       console.log('store.search = ', search)
       axios
@@ -32,18 +32,37 @@ export default {
           this.store.movies = res.data.results
           console.log(this.store)
         })
+    },
+
+    GetSeries() {
+      console.log('START SERIES')
+      const search = this.store.search
+      console.log('store.search = ', search)
+      axios
+        .get('https://api.themoviedb.org/3/search/tv?api_key=98ef93e079d0668313036d20d223c90d', {
+          params: {
+            query: search,
+          }
+        })
+        .then((res) => {
+          console.log(res.data)
+          console.log(res.data.results)
+          this.store.seriesTv = res.data.results
+          console.log(this.store)
+        })
     }
   },
   mounted() {
     console.log(this.store)
     this.Getmovies()
+    this.GetSeries()
   }
 
 }
 </script>
 
 <template>
-  <Header @AcSearch="Getmovies"></Header>
+  <Header @AcSearch="Getmovies(); GetSeries();"></Header>
   <Main></Main>
 </template>
 
