@@ -6,9 +6,10 @@ export default {
             type: Object,
             required: true,
         },
-        series: {
-            type: Object,
-            required: true,
+    },
+    methods: {
+        imgPreUrl() {
+            return "https://image.tmdb.org/t/p/w342/"
         }
     }
 }
@@ -16,6 +17,7 @@ export default {
 
 <template>
     <li class="cards">
+        <img :src="`https://image.tmdb.org/t/p/w92/${movie.poster_path}`" />
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.original_title }}</p>
         <span>

@@ -12,6 +12,7 @@ export default {
 
 <template>
     <li class="cards">
+        <img :src="`https://image.tmdb.org/t/p/w300/${series.poster_path}`" />
         <h3>{{ series.name }}</h3>
         <p>{{ series.original_name }}</p>
         <span>
