@@ -7,11 +7,6 @@ export default {
             required: true,
         },
     },
-    methods: {
-        imgPreUrl() {
-            return "https://image.tmdb.org/t/p/w342/"
-        }
-    }
 }
 </script>
 
@@ -20,18 +15,44 @@ export default {
         <img :src="`https://image.tmdb.org/t/p/w92/${movie.poster_path}`" />
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.original_title }}</p>
-        <span>
-            <p v-if="movie.original_language === 'en'">
+        <ul>
+            <li v-if="movie.original_language === 'en'">
                 <img src="/img/Bandiera-Inglese.png" alt="">
-            </p>
-            <p v-else-if="movie.original_language === 'es'">
+            </li>
+            <li v-else-if="movie.original_language === 'es'">
                 <img src="/img/bandiera-spagnola.jpg" alt="">
-            </p>
-            <p v-else>
+            </li>
+            <li v-else>
                 {{ movie.original_language }}
-            </p>
-        </span>
-        <p>{{ movie.vote_average }}</p>
+            </li>
+        </ul>
+        <ul>
+            <li v-show="parseInt(movie.vote_average) === 1 || parseInt(movie.vote_average) === 2">
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
+            <li v-show="parseInt(movie.vote_average) === 3 || parseInt(movie.vote_average) === 4">
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
+            <li v-show="parseInt(movie.vote_average) === 5 || parseInt(movie.vote_average) === 6">
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
+            <li v-show="parseInt(movie.vote_average) === 7 || parseInt(movie.vote_average) === 8">
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
+            <li v-show="parseInt(movie.vote_average) === 9 || parseInt(movie.vote_average) === 10">
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+                <font-awesome-icon icon="fa-solid fa-star" />
+            </li>
+        </ul>
     </li>
 </template>
 
